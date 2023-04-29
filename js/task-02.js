@@ -8,13 +8,22 @@ const ingredients = [
 ];
 
 const listArea = document.querySelector("#ingredients");
-const listElements = [];
 
-ingredients.forEach(el => {
+//*1-й варіант
+// const listElements = [];
+// ingredients.forEach(el => {
+//   const listEl = document.createElement('li');
+//   listEl.textContent = el;
+//   listEl.classList.add('item');
+//   listElements.push(listEl);
+// });
+
+//*2-й варіант
+const listElements = ingredients.map(el => {
   const listEl = document.createElement('li');
   listEl.textContent = el;
   listEl.classList.add('item');
-  listElements.push(listEl);
+  return listEl;
 });
 
 listArea.append(...listElements);

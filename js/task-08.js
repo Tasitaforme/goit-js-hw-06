@@ -1,5 +1,18 @@
 const form = document.querySelector(".login-form");
 
+//* Додавання атрибуту в HTML патерну та щоб виводилось повідомення, якщо пароль містить пробіли в паролі
+//form.password.setAttribute('pattern', '^\\S+$');
+//form.password.setAttribute('title', 'Пароль, не повинен містити пробіли!!!');
+
+//* Додавання атрибуту з JS в HTML для неможливості вводу пробілів в паролі 
+//form.password.setAttribute('onkeyup', 'this.value=this.value.replace(/\\s+/gi,"")');
+
+//* Унеможливлювання поставити пробіл в полях вводу форми
+form.addEventListener('keyup', e => {
+  e.target.value = e.target.value.replace(/\s+/gi, '');
+});
+
+
 form.addEventListener('submit', handleSubmit);
 
 function handleSubmit (event) {
@@ -7,7 +20,9 @@ function handleSubmit (event) {
     
     const {elements: { email, password },
     } = event.currentTarget;
-    
+
+
+
     if (email.value === "" || password.value === "") {
         alert("Всі поля повинні бути заповнені");
     } else {
@@ -19,3 +34,5 @@ function handleSubmit (event) {
     }
     event.currentTarget.reset();    
 };
+
+
